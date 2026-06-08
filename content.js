@@ -93,6 +93,23 @@
         'top news',
         'in the news'
       ]
+    },
+    {
+      // Job-recommendation modules injected into the feed.
+      id: 'jobs',
+      key: 'filterJobs',
+      label: 'Job recommendations',
+      defaultOn: true,
+      exact: [
+        'jobs recommended for you',
+        'recommended jobs',
+        'jobs for you',
+        'job picks for you',
+        'top job picks for you',
+        'more jobs for you',
+        'jobs you may be interested in',
+        'based on your profile and search history'
+      ]
     }
   ];
 
