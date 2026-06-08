@@ -33,9 +33,9 @@ everything it does.
   remember whether your switches are on or off. It does **not** ask to read your
   tabs, your cookies, your passwords, or your browsing history. (Chrome shows
   you the exact permissions before you install.)
-- **It's tiny and readable.** The whole thing is about 380 lines of plain
+- **It's small and readable.** The whole thing is about 740 lines of plain
   JavaScript with no hidden packages, no "build step," and no outside code
-  pulled from the internet. A developer can read all of it in a few minutes.
+  pulled from the internet — readable end to end in one sitting.
 - **You can verify it yourself.** Run `bash tools/audit.sh` and it
   automatically checks that none of the dangerous patterns (hidden network
   calls, code injection, extra permissions) are present. It currently passes
@@ -101,9 +101,13 @@ version, download the ZIP again, unzip it over the old folder, then click the
 ## Frequently asked
 
 **Will LinkedIn know I'm using this or ban me?**
-No. The extension only hides things on your own screen — the same as if you
-scrolled past them. It doesn't log in, click, scrape, or talk to LinkedIn's
-servers in any special way.
+The risk is low. LinkedOut only changes what *you* see — it hides cards that are
+already on your screen, the same as scrolling past them. It doesn't log in,
+click, scrape, or talk to LinkedIn's servers, so there's nothing on their end to
+detect. That said, LinkedIn's User Agreement broadly discourages software that
+modifies the service, and no extension can *guarantee* immunity — use it because
+it improves your own experience, not on a promise from us. (The MIT license is
+provided without warranty.)
 
 **Does it work with uBlock Origin / other extensions?**
 Yes. It only touches the feed's visible posts and doesn't interfere with other

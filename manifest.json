@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "LinkedOut - Hide LinkedIn Promoted & Slop",
+  "name": "LinkedOut - Hide Promoted & Slop on LinkedIn",
   "version": "1.0.0",
   "description": "Hide Promoted, Suggested, AI slop & 'People you may know' from your LinkedIn feed. On-page toggles. Zero tracking, no ads.",
   "permissions": ["storage"],
