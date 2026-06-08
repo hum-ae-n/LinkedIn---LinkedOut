@@ -8,7 +8,19 @@
  */
 'use strict';
 
-var DEFAULTS = { filterPromoted: true, filterSuggested: true };
+// id = category id (matches content.js / background.js); key = storage key.
+var CATEGORIES = [
+  { id: 'promoted',  key: 'filterPromoted',  defaultOn: true },
+  { id: 'suggested', key: 'filterSuggested', defaultOn: true },
+  { id: 'recommend', key: 'filterRecommend', defaultOn: false },
+  { id: 'news',      key: 'filterNews',      defaultOn: false }
+];
+
+function defaults() {
+  var d = {};
+  CATEGORIES.forEach(function (c) { d[c.key] = c.defaultOn; });
+  return d;
+}
 
 function $(id) {
   return document.getElementById(id);
@@ -24,8 +36,15 @@ function refreshCounts() {
   try {
     chrome.runtime.sendMessage({ type: 'LFF_GET_COUNTS' }, function (resp) {
       if (chrome.runtime.lastError || !resp) return;
-      $('count-promoted').textContent = String(resp.promoted | 0);
-      $('count-suggested').textContent = String(resp.suggested | 0);
+      var counts = resp.counts || {};
+      var total = 0;
+      CATEGORIES.forEach(function (c) {
+        var n = counts[c.id] | 0;
+        total += n;
+        var el = $('count-' + c.id);
+        if (el) el.textContent = String(n);
+      });
+      $('count-total').textContent = String(resp.total != null ? resp.total : total);
     });
   } catch (e) {
     // Service worker unavailable — leave the placeholder zeros.
@@ -35,17 +54,22 @@ function refreshCounts() {
 function init() {
   showVersion();
 
-  chrome.storage.sync.get(DEFAULTS, function (prefs) {
-    if (chrome.runtime.lastError || !prefs) prefs = DEFAULTS;
-    $('toggle-promoted').checked = !!prefs.filterPromoted;
-    $('toggle-suggested').checked = !!prefs.filterSuggested;
+  chrome.storage.sync.get(defaults(), function (prefs) {
+    if (chrome.runtime.lastError || !prefs) prefs = defaults();
+    CATEGORIES.forEach(function (c) {
+      var input = $('toggle-' + c.id);
+      if (input) input.checked = !!prefs[c.key];
+    });
   });
 
-  $('toggle-promoted').addEventListener('change', function (e) {
-    chrome.storage.sync.set({ filterPromoted: e.target.checked });
-  });
-  $('toggle-suggested').addEventListener('change', function (e) {
-    chrome.storage.sync.set({ filterSuggested: e.target.checked });
+  CATEGORIES.forEach(function (c) {
+    var input = $('toggle-' + c.id);
+    if (!input) return;
+    input.addEventListener('change', function (e) {
+      var patch = {};
+      patch[c.key] = e.target.checked;
+      chrome.storage.sync.set(patch);
+    });
   });
 
   refreshCounts();

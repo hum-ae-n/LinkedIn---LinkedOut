@@ -53,9 +53,22 @@ body {
 }
 
 .lff-text {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
   font-weight: 500;
   cursor: pointer;
   user-select: none;
+}
+
+.lff-text label {
+  cursor: pointer;
+}
+
+.lff-count {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--lff-muted);
 }
 
 /* Toggle switch — pure CSS, animated via transition (no JS animation lib). */
@@ -121,6 +134,14 @@ body {
 
 .lff-stats strong {
   color: var(--lff-blue);
+}
+
+.lff-hint {
+  margin: 0 0 4px;
+  padding: 0 2px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--lff-muted);
 }
 
 .lff-footer {

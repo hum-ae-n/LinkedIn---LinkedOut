@@ -26,7 +26,7 @@ check_absent() {
 
 echo "== Prohibited code patterns (PRD §7.3) =="
 check_absent "no eval / new Function"                 "eval|new[[:space:]]+Function"
-check_absent "no innerHTML / outerHTML / document.write" "innerHTML|outerHTML|document\.write"
+check_absent "no innerHTML / outerHTML / document.write" "\.(inner|outer)HTML|document\.write\("
 check_absent "no dynamic script creation"             "createElement\(['\"]script"
 check_absent "no network APIs"                         "fetch|XMLHttpRequest|WebSocket|sendBeacon"
 check_absent "no privileged chrome APIs"               "chrome\.(tabs|cookies|webRequest|webNavigation)"

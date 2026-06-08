@@ -77,8 +77,10 @@ You do **not** need to know how to code, and you don't need any developer tools.
 
 1. Go to [linkedin.com/feed](https://www.linkedin.com/feed).
 2. Promoted and Suggested posts are hidden automatically.
-3. Click the toolbar icon to open the little control panel where you can turn
-   each filter on or off and see how many posts have been hidden.
+3. A small **control panel appears at the bottom-left of the page** — flip any
+   filter on/off, see live counts, or click **👁 Show hidden posts** to peek at
+   what was filtered. (You can also click the toolbar icon for the same
+   controls.)
 
 > **Tip:** if you don't see the icon, click the puzzle-piece 🧩 icon in Chrome's
 > toolbar and pin "LinkedIn Feed Filter" so it's always visible.
@@ -115,12 +117,23 @@ Chinese. (Adding more is easy — see *Updating the label map* below.)
 
 ## Features
 
-- Toggle **Hide Promoted** and **Hide Suggested** independently
+- Four independent filters, each its own toggle:
+  - **Promoted** — paid ads (on by default)
+  - **Suggested** — algorithmic posts from outside your network (on by default)
+  - **Recommendations** — "People you may know", "Add to your feed", follow
+    suggestions (off by default — opt in)
+  - **News & trending** — "Suggested News for You" and trending cards (off by
+    default — opt in)
+- **On-page control panel** — a small floating widget at the bottom-left of your
+  feed lets you flip any filter and **peek at hidden posts** ("👁 Show hidden")
+  without opening the toolbar menu
 - Preferences persist across sessions and devices (`chrome.storage.sync`)
 - Live badge count of posts filtered this session
 - Handles infinite scroll via a debounced `MutationObserver`
 - Resilient detection: matches localized **label text**, not brittle CSS class
   names
+- Data-driven categories — supporting a new LinkedIn "junk" label is a one-line
+  addition
 - **Zero data collection** — no analytics, no telemetry, no external calls
 - No build step, no npm packages, no CDN imports — pure vanilla JS/HTML/CSS
 
@@ -170,11 +183,20 @@ only:
 python3 tools/gen_icons.py
 ```
 
-## Updating the label map
+## Adding labels or whole new filters
 
-LinkedIn localizes the "Promoted"/"Suggested" labels. To support a new
-language, add the translated strings to the `LABELS` object near the top of
-`content.js`. Matching is case-insensitive and whitespace-trimmed.
+Detection is data-driven. Near the top of `content.js` is a `CATEGORIES` array;
+each entry is one independently toggleable filter with an `exact` list of label
+strings. To support a new language, add the translated string to the relevant
+category's `exact` list. To add a brand-new filter, append a new category object
+(give it an `id`, `key`, `label`, `defaultOn`, and `exact` list) and add a
+matching toggle in `popup.html` plus its key in `background.js`'s
+`DEFAULT_PREFS`. Matching is case-insensitive and whitespace-trimmed.
+
+The Promoted and Suggested categories are fully localized (English, German,
+French, Spanish, Portuguese, Italian, Dutch, Norwegian, Swedish, Japanese,
+Simplified Chinese). The opt-in Recommendations and News categories ship with
+English labels and are easy to extend the same way.
 
 ## License
 

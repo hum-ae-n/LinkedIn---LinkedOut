@@ -14,7 +14,10 @@
 
   <main class="lff-main">
     <div class="lff-row">
-      <label class="lff-text" for="toggle-promoted">Hide Promoted</label>
+      <span class="lff-text">
+        <label for="toggle-promoted">Hide Promoted</label>
+        <span class="lff-count" id="count-promoted">0</span>
+      </span>
       <label class="lff-switch" aria-label="Hide Promoted posts">
         <input type="checkbox" id="toggle-promoted" />
         <span class="lff-slider"></span>
@@ -22,17 +25,43 @@
     </div>
 
     <div class="lff-row">
-      <label class="lff-text" for="toggle-suggested">Hide Suggested</label>
+      <span class="lff-text">
+        <label for="toggle-suggested">Hide Suggested</label>
+        <span class="lff-count" id="count-suggested">0</span>
+      </span>
       <label class="lff-switch" aria-label="Hide Suggested posts">
         <input type="checkbox" id="toggle-suggested" />
         <span class="lff-slider"></span>
       </label>
     </div>
 
+    <div class="lff-row">
+      <span class="lff-text">
+        <label for="toggle-recommend">Hide Recommendations</label>
+        <span class="lff-count" id="count-recommend">0</span>
+      </span>
+      <label class="lff-switch" aria-label="Hide recommendation cards">
+        <input type="checkbox" id="toggle-recommend" />
+        <span class="lff-slider"></span>
+      </label>
+    </div>
+
+    <div class="lff-row">
+      <span class="lff-text">
+        <label for="toggle-news">Hide News &amp; trending</label>
+        <span class="lff-count" id="count-news">0</span>
+      </span>
+      <label class="lff-switch" aria-label="Hide news and trending cards">
+        <input type="checkbox" id="toggle-news" />
+        <span class="lff-slider"></span>
+      </label>
+    </div>
+
     <p class="lff-stats">
-      <strong id="count-promoted">0</strong> Promoted /
-      <strong id="count-suggested">0</strong> Suggested filtered
+      <strong id="count-total">0</strong> posts filtered this session
     </p>
+    <p class="lff-hint">Tip: use the on-page panel (bottom-left of your feed) to
+      toggle filters or peek at hidden posts without opening this menu.</p>
   </main>
 
   <footer class="lff-footer">
