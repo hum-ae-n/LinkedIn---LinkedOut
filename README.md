@@ -1,5 +1,27 @@
 # LinkedIn Feed Filter
 
+```text
+    __    _       __            ______        __
+   / /   (_)___  / /_____  ____/ / __ \__  __/ /_
+  / /   / / __ \/ //_/ _ \/ __  / / / / / / / __/
+ / /___/ / / / / ,< /  __/ /_/ / /_/ / /_/ / /_
+/_____/_/_/ /_/_/|_|\___/\__,_/\____/\__,_/\__/
+
+      L I N K E D O U T  —  the LinkedIn feed, minus the slop
+
+
+    IN                     +----------+                  OUT
+  -----------              |   FEED   |               ------------
+   Promoted        ----->  |  FILTER  |  ----->         Posts from
+   Suggested               |   v1.0   |                 humans you
+   "Agree? y/n"            +----------+                 actually chose
+   AI slop (reposted!)                                  to follow.
+   "People you may                                      ...and that's it.
+    know" x47                                           that's the whole feed.
+
+                        ( x_x )  ----->  \( ^_^ )/
+```
+
 A free Chrome extension that hides **Promoted** (ads) and **Suggested** posts
 from your LinkedIn home feed, so you only see content from the people you
 actually chose to follow.
@@ -7,6 +29,14 @@ actually chose to follow.
 > It hides posts that are *already on the page* (by setting them to "invisible").
 > It is **not** an ad blocker — it doesn't touch your network traffic, cookies,
 > or anything outside the LinkedIn feed.
+
+## Demo
+
+<!-- Drop your screen recording here. GitHub renders an uploaded .mp4/.mov/.gif
+     inline — just drag the file into the README editor, or paste the asset URL
+     between the tags below. -->
+
+> 🎥 _Demo video coming soon — drag your recording into this section._
 
 ---
 
