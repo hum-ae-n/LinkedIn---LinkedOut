@@ -5,11 +5,14 @@ Copy-paste fields for the Web Store Developer Dashboard.
 ## Name (max 45 chars)
 
 ```
-LinkedOut - Hide LinkedIn Promoted & Slop
+LinkedOut - Hide Promoted & Slop on LinkedIn
 ```
 
-> Matches `manifest.json` "name". "LinkedOut" leads (memorable + avoids a
-> trademark-leading name); "LinkedIn / Promoted" follow for search discovery.
+> Matches `manifest.json` "name". "LinkedOut" is the mark and leads the title;
+> "on LinkedIn" is **descriptive (nominative) use** — it states where the tool
+> works, not that LinkedIn endorses or made it. This framing avoids the Web
+> Store "don't imply endorsement / affiliation" trademark flag. Do not lead the
+> name with "LinkedIn" or imply partnership anywhere in the listing.
 
 ## Summary / short description (max 132 chars)
 
